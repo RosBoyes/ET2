@@ -1,0 +1,115 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "Beta"
+  },
+  html: 'Your <a class="govuk-link--no-visited-state" href="#">feedback</a> helps us to improve this service.'
+}) }}
+
+{{ govukBackLink({
+  text: "Back",
+  href: "gender"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post" action="telephone">
+      <h1 class="govuk-heading-xl">
+        What is your contact or home address?
+      </h1>
+      <p class="govuk-body">We'll send any correspondence to this address.</p>
+
+      <h2 class="govuk-heading-m">Postcode</h2>
+      <p class="govuk-heading-m"> {{ data['claimant-postcode'] }}</p><p style="margin-left: 90px; margin-top: -45px;" class="govuk-body"><a class="govuk-link govuk-link--no-visited-state" href="address-1">Change</a></p>
+
+      <div class="govuk-form-group">
+        <label class="govuk-heading-m" for="claimant-address" style="margin-bottom: 5px;">
+          Select an address
+        </label>
+        <select class="govuk-select" id="claimant-address" name="claimant-address">
+          <option value="1 address found" selected>1 address found</option>
+          <option value="1 Main Road, SW1A 1AA, London" >1 Main Road, SW1A 1AA, London</option>
+        </select>
+      </div>
+
+      <p class="govuk-body"><a class="govuk-link--no-visited-state" href="#" onclick="myFunction()">I can't find my address in the list</a></p>
+
+
+      <div id="myDIV" style="display: none;">
+
+        <label class="govuk-label" for="width-20">
+            Building and street
+          </label>
+          <input class="govuk-input govuk-input--width-20 govuk-!-margin-bottom-5" id="width-20" name="width-20" type="text">
+          <input class="govuk-input govuk-input--width-20 govuk-!-margin-bottom-5" id="width-20" name="width-20" type="text">
+
+          <label class="govuk-label" for="width-20">
+              Town or city
+            </label>
+            <input class="govuk-input govuk-input--width-20 govuk-!-margin-bottom-5" id="width-20" name="width-20" type="text">
+
+            <label class="govuk-label" for="width-20">
+                County
+              </label>
+              <input class="govuk-input govuk-input--width-20 govuk-!-margin-bottom-5" id="width-20" name="width-20" type="text">
+
+              <label class="govuk-label" for="width-10">
+                  Postcode
+                </label>
+                <input class="govuk-input govuk-input--width-10 govuk-!-margin-bottom-5" id="width-20" name="width-10" type="text">
+
+      </div>
+
+
+      <div class="govuk-button-group">
+        <button class="govuk-button" data-module="govuk-button" type="submit">
+          Save and continue
+        </button>
+
+        <button class="govuk-button govuk-button--secondary" data-module="govuk-button" type="button" onclick="window.location.href='/ET1/claim-saved';">
+          Save as draft
+        </button>
+      </div>
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Contact us
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          Call one of our Employment Tribunal customer contact centres. They cannot give you legal advice.
+          <br><br>
+            Telephone: 0300 123 1024 <br>
+            Telephone: 0300 303 5176 (Welsh language) <br>
+            Telephone: 0300 790 6234 (Scotland) <br>
+            Textphone: 18001 0300 123 1024 (England and Wales) <br>
+            Textphone: 18001 0300 790 6234 (Scotland) <br>
+            Monday to Friday, 9am to 5pm<br>
+            <br><br>
+            <a class="govuk-body" href="#">Find out about call charges</a>
+         </div>
+      </details>
+    </div>
+  </div>
+
+  <script>
+  function myFunction() {
+    var x = document.getElementById("myDIV");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+  </script>
+{% endblock %}

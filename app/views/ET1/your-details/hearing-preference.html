@@ -1,0 +1,114 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "Beta"
+  },
+  html: 'Your <a class="govuk-link--no-visited-state" href="#">feedback</a> helps us to improve this service.'
+}) }}
+
+{{ govukBackLink({
+  text: "Back",
+  href: "/ET1/your-details/contact-preference"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post" action="reasonable-adjustments">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="video-hearings-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+              <h1 class="govuk-fieldset__heading">
+                Would you be able to take part in hearings by video and phone?
+              </h1>
+            </legend>
+            <p class="govuk-body">If your case goes to a hearing, it can take place either:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>in person, in a room at a tribunal (‘face-to-face’)</li>
+              <li>by video (where you can join from a place suitable to you)</li>
+              <li>by phone</li>
+            </ul>
+
+            <div id="video-hearings-hint" class="govuk-hint">
+              Select all that apply
+            </div>
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="video-hearings" name="video-hearings" type="checkbox" value="Yes, I can take part in video hearings">
+                <label class="govuk-label govuk-checkboxes__label" for="video-hearings">
+                  Yes, I can take part in video hearings
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="video-hearings-2" name="video-hearings" type="checkbox" value="Yes, I can take part in phone hearings">
+                <label class="govuk-label govuk-checkboxes__label" for="video-hearings-2">
+                  Yes, I can take part in phone hearings
+                </label>
+              </div>
+
+              <div class="govuk-checkboxes__divider">or</div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="video-hearings-5" name="video-hearings" type="checkbox" value="No, I cannot take part in either video or phone hearings" data-behaviour="exclusive" data-aria-controls="conditional-no-hearings">
+                <label class="govuk-label govuk-checkboxes__label" for="video-hearings-5">
+                  No, I cannot take part in either video or phone hearings
+                </label>
+                <div id="video-hearings-5-hint" class="govuk-hint govuk-checkboxes__hint">
+                    If you choose this option please tell us why in case we can assist you
+                  </div>
+
+                  <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-no-hearings">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label" for="contact-by-email">
+                      Explain why you are unable to take part in video or phone hearings
+                    </label>
+                    <textarea class="govuk-textarea govuk-!-width-full" id="contact-by-email" name="contact-by-email" type="email" spellcheck="false" autocomplete="email" rows="3"></textarea>
+                  </div>
+
+
+          </fieldset>
+        </div>
+
+
+      <div class="govuk-button-group">
+        <button class="govuk-button" data-module="govuk-button" type="submit">
+          Save and continue
+        </button>
+
+        <button class="govuk-button govuk-button--secondary" data-module="govuk-button" type="button" onclick="window.location.href='/ET1/claim-saved';">
+          Save as draft
+        </button>
+      </div>
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Contact us
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          Call one of our Employment Tribunal customer contact centres. They cannot give you legal advice.
+          <br><br>
+            Telephone: 0300 123 1024 <br>
+            Telephone: 0300 303 5176 (Welsh language) <br>
+            Telephone: 0300 790 6234 (Scotland) <br>
+            Textphone: 18001 0300 123 1024 (England and Wales) <br>
+            Textphone: 18001 0300 790 6234 (Scotland) <br>
+            Monday to Friday, 9am to 5pm<br>
+            <br><br>
+            <a class="govuk-body" href="#">Find out about call charges</a>
+         </div>
+      </details>
+    </div>
+  </div>
+
+
+{% endblock %}
